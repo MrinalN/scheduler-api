@@ -2,6 +2,7 @@ const router = require("express").Router();
 
 module.exports = (db, updateAppointment) => {
   router.get("/appointments", (request, response) => {
+    console.log("APPTS REQUEST !");
     db.query(
       `
       SELECT
@@ -27,6 +28,7 @@ module.exports = (db, updateAppointment) => {
   });
 
   router.put("/appointments/:id", (request, response) => {
+    console.log("APPTS:ID REQUEST !");
     if (process.env.TEST_ERROR) {
       setTimeout(() => response.status(500).json({}), 1000);
       return;
@@ -52,6 +54,7 @@ module.exports = (db, updateAppointment) => {
   });
 
   router.delete("/appointments/:id", (request, response) => {
+    console.log("APPTS:ID DELETE REQUEST !");
     if (process.env.TEST_ERROR) {
       setTimeout(() => response.status(500).json({}), 1000);
       return;
